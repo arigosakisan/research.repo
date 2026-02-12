@@ -1,0 +1,183 @@
+{
+  "agentId": "workflow-architect",
+  "agentName": "Workflow Architecture Agent",
+  "role": "Design multi-agent workflow for content pipeline",
+  "model": "gemini/gemini-2.0-flash-exp",
+  "findings": {
+    "summary": "Multi-agent workflow design for content pipeline",
+    "agents": [
+      {
+        "name": "Reddit Monitoring Agent",
+        "trigger": "Scheduled (every 30 minutes) or event-driven",
+        "inputs": [
+          "Subreddit list",
+          "Category mappings",
+          "Trend thresholds"
+        ],
+        "outputs": [
+          "Trending post data",
+          "Metadata",
+          "Scores"
+        ],
+        "nextAgent": "Content Curation Agent",
+        "model": "Lightweight (Gemini Flash for analysis)",
+        "tools": [
+          "Reddit API",
+          "Trend analysis",
+          "Scoring algorithm"
+        ]
+      },
+      {
+        "name": "Content Curation Agent",
+        "trigger": "Receives trending posts from Monitor",
+        "inputs": [
+          "Trending posts",
+          "Quality criteria",
+          "Brand guidelines"
+        ],
+        "outputs": [
+          "Curated post list",
+          "Relevance scores",
+          "Topic extraction"
+        ],
+        "nextAgent": "Research Agent",
+        "model": "Claude 3.5 Sonnet (reasoning)",
+        "tools": [
+          "Content analysis",
+          "Topic modeling",
+          "Quality scoring"
+        ]
+      },
+      {
+        "name": "Research Agent",
+        "trigger": "Receives curated posts from Curation",
+        "inputs": [
+          "Curated posts",
+          "Topics",
+          "Category"
+        ],
+        "outputs": [
+          "Additional context",
+          "Facts",
+          "Sources",
+          "Angles"
+        ],
+        "nextAgent": "Writing Agent",
+        "model": "Gemini Pro 1.5 (web search + analysis)",
+        "tools": [
+          "Web search",
+          "Fact checking",
+          "Source validation"
+        ]
+      },
+      {
+        "name": "Writing Agent",
+        "trigger": "Receives research from Research Agent",
+        "inputs": [
+          "Research data",
+          "Sources",
+          "Category",
+          "Tone guidelines"
+        ],
+        "outputs": [
+          "Article draft",
+          "Headlines",
+          "Meta description"
+        ],
+        "nextAgent": "Editing Agent",
+        "model": "GPT-4 Turbo or Claude 3 Opus (quality writing)",
+        "tools": [
+          "Content generation",
+          "SEO optimization",
+          "Headline generation"
+        ]
+      },
+      {
+        "name": "Editing Agent",
+        "trigger": "Receives draft from Writing Agent",
+        "inputs": [
+          "Article draft",
+          "Brand voice",
+          "SEO requirements"
+        ],
+        "outputs": [
+          "Edited article",
+          "Quality score",
+          "Improvement suggestions"
+        ],
+        "nextAgent": "Image Generation Agent",
+        "model": "Claude 3.5 Sonnet (editing + reasoning)",
+        "tools": [
+          "Grammar check",
+          "Style consistency",
+          "Fact verification"
+        ]
+      },
+      {
+        "name": "Image Generation Agent",
+        "trigger": "Receives edited article from Editing Agent",
+        "inputs": [
+          "Article content",
+          "Key topics",
+          "Visual style guide"
+        ],
+        "outputs": [
+          "2+ generated images",
+          "Alt text",
+          "Captions"
+        ],
+        "nextAgent": "Publishing Agent",
+        "model": "DALL-E 3 or Stable Diffusion XL",
+        "tools": [
+          "Image generation",
+          "Alt text creation",
+          "Image optimization"
+        ]
+      },
+      {
+        "name": "Publishing Agent",
+        "trigger": "Receives complete article + images",
+        "inputs": [
+          "Final article",
+          "Images",
+          "Category",
+          "Scheduling preferences"
+        ],
+        "outputs": [
+          "Published post URL",
+          "Publication status",
+          "Analytics setup"
+        ],
+        "nextAgent": "None (terminal)",
+        "model": "Lightweight coordination (Gemini Flash)",
+        "tools": [
+          "WordPress API",
+          "Media upload",
+          "SEO metadata",
+          "Analytics tracking"
+        ]
+      }
+    ],
+    "workflow": {
+      "mode": "Sequential pipeline with parallel optimization",
+      "errorHandling": "Retry with exponential backoff, manual review queue",
+      "humanInLoop": [
+        "Content approval before publishing (optional)",
+        "Quality threshold failures",
+        "Controversial topics"
+      ],
+      "parallelization": [
+        "Monitor multiple subreddits simultaneously",
+        "Generate multiple images in parallel",
+        "Process multiple articles through pipeline concurrently"
+      ]
+    },
+    "orchestration": {
+      "framework": "BullMQ or Temporal for workflow management",
+      "stateManagement": "PostgreSQL for workflow state, Redis for real-time status",
+      "monitoring": "Agent performance metrics, success rates, latency tracking"
+    }
+  },
+  "timestamp": "2026-02-12T21:55:52.710Z",
+  "duration": "2.79s"
+}

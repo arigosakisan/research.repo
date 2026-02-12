@@ -1,0 +1,65 @@
+{
+  "agentId": "market-researcher",
+  "agentName": "Market Research Agent",
+  "role": "Conduct market research and competitive analysis",
+  "model": "gemini/gemini-2.0-flash-exp",
+  "findings": {
+    "summary": "Market analysis for automated content engines and AI-powered publishing platforms",
+    "competitors": [
+      {
+        "name": "ContentBot",
+        "strengths": [
+          "AI writing",
+          "SEO optimization"
+        ],
+        "weaknesses": [
+          "No Reddit integration",
+          "Limited multi-agent workflow"
+        ],
+        "marketShare": "~5%"
+      },
+      {
+        "name": "Jasper.ai",
+        "strengths": [
+          "High-quality content",
+          "Brand voice"
+        ],
+        "weaknesses": [
+          "Manual workflow",
+          "Expensive"
+        ],
+        "marketShare": "~15%"
+      },
+      {
+        "name": "Copy.ai",
+        "strengths": [
+          "Easy to use",
+          "Templates"
+        ],
+        "weaknesses": [
+          "No automation pipeline",
+          "No publishing integration"
+        ],
+        "marketShare": "~8%"
+      }
+    ],
+    "marketOpportunities": [
+      "Reddit trend monitoring is underserved",
+      "Multi-agent automation is emerging trend",
+      "WordPress integration adds immediate value",
+      "Category-specific content generation has high demand",
+      "Automated image generation reduces production time"
+    ],
+    "targetAudience": [
+      "Content marketing teams",
+      "Digital agencies",
+      "Tech bloggers and publishers",
+      "Growth marketers",
+      "Media companies"
+    ],
+    "estimatedMarketSize": "$2.1B by 2026 (AI content generation market)",
+    "growthRate": "26% CAGR"
+  },
+  "timestamp": "2026-02-12T21:55:49.161Z",
+  "duration": "2.19s"
+}

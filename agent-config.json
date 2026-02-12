@@ -1,0 +1,166 @@
+{
+  "swarm": {
+    "name": "Content Engine Research Swarm",
+    "description": "Multi-agent research team for automated content engine",
+    "multiModelRouter": {
+      "enabled": true,
+      "models": [
+        {
+          "provider": "gemini",
+          "model": "gemini-2.0-flash-exp",
+          "apiKey": "GEMINI_API_KEY",
+          "priority": 1,
+          "capabilities": ["research", "analysis", "fast-generation"]
+        },
+        {
+          "provider": "openrouter",
+          "model": "anthropic/claude-3.5-sonnet",
+          "apiKey": "OPENROUTER_API_KEY",
+          "priority": 2,
+          "capabilities": ["deep-research", "planning", "documentation"]
+        },
+        {
+          "provider": "openrouter",
+          "model": "google/gemini-pro-1.5",
+          "apiKey": "OPENROUTER_API_KEY",
+          "priority": 3,
+          "capabilities": ["analysis", "technical-writing"]
+        }
+      ],
+      "fallbackStrategy": "sequential",
+      "loadBalancing": true
+    },
+    "agents": [
+      {
+        "id": "market-researcher",
+        "name": "Market Research Agent",
+        "role": "Conduct market research and competitive analysis",
+        "model": "gemini",
+        "instructions": "Research existing automated content engines, Reddit monitoring tools, AI content generation platforms, and WordPress automation solutions. Analyze competitors, market gaps, and opportunities.",
+        "tools": ["web_search", "analysis"],
+        "priority": "high"
+      },
+      {
+        "id": "technical-researcher",
+        "name": "Technical Research Agent",
+        "role": "Research technical architecture and implementation",
+        "model": "openrouter",
+        "instructions": "Research Reddit API integration, AI models for content generation (GPT-4, Claude, Gemini), WordPress REST API, image generation APIs (DALL-E, Midjourney, Stable Diffusion), content moderation, and scalability patterns.",
+        "tools": ["web_search", "technical_analysis"],
+        "priority": "high"
+      },
+      {
+        "id": "workflow-architect",
+        "name": "Workflow Architecture Agent",
+        "role": "Design multi-agent workflow for content pipeline",
+        "model": "openrouter",
+        "instructions": "Design the agent workflow for: 1) Reddit Monitoring Agent, 2) Content Curation Agent, 3) Research Agent, 4) Writing Agent, 5) Editing Agent, 6) Image Generation Agent, 7) Publishing Agent. Define interactions, data flow, and orchestration.",
+        "tools": ["planning", "architecture_design"],
+        "priority": "high"
+      },
+      {
+        "id": "feature-analyst",
+        "name": "Feature Analysis Agent",
+        "role": "Analyze and define product features",
+        "model": "gemini",
+        "instructions": "Define features for: Reddit trending monitoring across 6 categories (AI, Tech, Science, Futurology, Marketing, Interesting), AI article generation with 2+ images, WordPress publishing, user administration, reaction systems, analytics dashboard, content scheduling.",
+        "tools": ["analysis", "feature_planning"],
+        "priority": "medium"
+      },
+      {
+        "id": "ux-researcher",
+        "name": "UX Research Agent",
+        "role": "Research user experience and interface needs",
+        "model": "gemini",
+        "instructions": "Research UX patterns for content management systems, admin interfaces, content approval workflows, analytics dashboards, and user role management. Consider accessibility and usability.",
+        "tools": ["ux_research", "design_patterns"],
+        "priority": "medium"
+      },
+      {
+        "id": "security-analyst",
+        "name": "Security Analysis Agent",
+        "role": "Analyze security and compliance requirements",
+        "model": "openrouter",
+        "instructions": "Research security considerations: API key management, Reddit API rate limiting, WordPress authentication, content moderation, GDPR compliance, data storage security, user authentication and authorization.",
+        "tools": ["security_analysis", "compliance"],
+        "priority": "medium"
+      },
+      {
+        "id": "goal-planner",
+        "name": "Goal Planning Agent",
+        "role": "Create strategic goals and roadmap",
+        "model": "openrouter",
+        "instructions": "Synthesize all research to create: project goals, success metrics, implementation phases, MVP definition, future enhancements, and timeline recommendations.",
+        "tools": ["planning", "synthesis"],
+        "priority": "high"
+      },
+      {
+        "id": "prd-writer",
+        "name": "PRD Writer Agent",
+        "role": "Compile comprehensive Product Requirements Document",
+        "model": "openrouter",
+        "instructions": "Create a detailed PRD document incorporating all research findings. Include: executive summary, problem statement, goals, user personas, features, technical architecture, agent workflow, user stories, success metrics, timeline, and risks.",
+        "tools": ["documentation", "synthesis"],
+        "priority": "critical"
+      }
+    ],
+    "executionStrategy": "parallel-then-sequential",
+    "phases": [
+      {
+        "name": "research",
+        "agents": ["market-researcher", "technical-researcher", "feature-analyst", "ux-researcher", "security-analyst"],
+        "execution": "parallel"
+      },
+      {
+        "name": "planning",
+        "agents": ["workflow-architect", "goal-planner"],
+        "execution": "parallel",
+        "dependsOn": ["research"]
+      },
+      {
+        "name": "documentation",
+        "agents": ["prd-writer"],
+        "execution": "sequential",
+        "dependsOn": ["research", "planning"]
+      }
+    ]
+  },
+  "research": {
+    "topic": "Automated Content Engine",
+    "requirements": {
+      "core_features": [
+        "Reddit trending post monitoring",
+        "AI-powered blog article generation",
+        "WordPress publishing integration",
+        "Multi-category support (AI, Tech, Science, Futurology, Marketing, Interesting)",
+        "Automatic image generation (2+ per article)"
+      ],
+      "agent_system": {
+        "minimum_agents": 5,
+        "roles": [
+          "Reddit Monitoring Agent - Track trending posts across categories",
+          "Content Curation Agent - Filter and select relevant posts",
+          "Research Agent - Gather additional context and information",
+          "Writing Agent - Generate engaging blog articles",
+          "Editing Agent - Review, refine, and optimize content",
+          "Image Generation Agent - Create relevant visuals",
+          "Publishing Agent - Handle WordPress publication"
+        ]
+      },
+      "additional_features": [
+        "Reaction system for published content",
+        "User administration and role management",
+        "Content approval workflow",
+        "Analytics and performance tracking",
+        "Scheduling and automation"
+      ]
+    },
+    "deliverables": [
+      "Comprehensive PRD document",
+      "Technical architecture recommendations",
+      "Agent workflow diagrams",
+      "Implementation roadmap",
+      "Risk assessment"
+    ]
+  }
+}
