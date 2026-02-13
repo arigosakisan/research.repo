@@ -1,0 +1,203 @@
+{
+  "swarm": {
+    "name": "AI-Agent Development & Ad Monetization Research",
+    "description": "Research AI coding agents for platform development and ad-based monetization strategy",
+    "version": "2.0",
+    "multiModelRouter": {
+      "enabled": true,
+      "models": [
+        {
+          "provider": "gemini",
+          "model": "gemini-2.0-flash-exp",
+          "apiKey": "GEMINI_API_KEY",
+          "priority": 1,
+          "capabilities": ["research", "analysis", "fast-generation"]
+        },
+        {
+          "provider": "openrouter",
+          "model": "anthropic/claude-3.5-sonnet",
+          "apiKey": "OPENROUTER_API_KEY",
+          "priority": 2,
+          "capabilities": ["deep-research", "planning", "documentation"]
+        },
+        {
+          "provider": "openrouter",
+          "model": "google/gemini-pro-1.5",
+          "apiKey": "OPENROUTER_API_KEY",
+          "priority": 3,
+          "capabilities": ["analysis", "technical-writing"]
+        }
+      ],
+      "fallbackStrategy": "sequential",
+      "loadBalancing": true
+    },
+    "agents": [
+      {
+        "id": "ai-coding-researcher",
+        "name": "AI Coding Agents Research Agent",
+        "role": "Research AI-powered coding agents and development platforms",
+        "model": "openrouter",
+        "instructions": "Research AI coding agents that can build WordPress platforms: Cursor, GitHub Copilot, Replit AI, v0.dev, Bolt.new, Lovable.dev, Claude Code (Anthropic), Aider, GPT Engineer, AutoGPT, MetaGPT, and similar. Analyze capabilities, costs, limitations, and feasibility of using AI agents to replace human developers. Focus on WordPress development, plugin creation, and theme customization.",
+        "tools": ["web_search", "analysis", "technical_research"],
+        "priority": "critical"
+      },
+      {
+        "id": "agentic-flow-researcher",
+        "name": "Agentic Flow & Multi-Agent Systems Research Agent",
+        "role": "Research agentic-flow frameworks and multi-agent development systems",
+        "model": "openrouter",
+        "instructions": "Deep dive into agentic-flow, claude-flow, AutoGen, CrewAI, LangGraph, and similar multi-agent frameworks. Research how to build autonomous agent swarms that can write code, debug, test, and deploy applications. Analyze E2B code interpreter integration, agent orchestration patterns, and self-improving agent systems.",
+        "tools": ["web_search", "technical_analysis", "architecture_design"],
+        "priority": "critical"
+      },
+      {
+        "id": "ad-monetization-researcher",
+        "name": "Ad Monetization Research Agent",
+        "role": "Research advertising networks and monetization strategies",
+        "model": "gemini",
+        "instructions": "Research Google AdSense, Ezoic, Mediavine, Raptive (formerly AdThrive), Monumetric, Snigel, and other ad networks. Analyze requirements (traffic, content quality), revenue potential (RPM, CTR), integration complexity, and optimization strategies. Compare ad-based revenue vs subscription models for content sites.",
+        "tools": ["web_search", "financial_analysis"],
+        "priority": "high"
+      },
+      {
+        "id": "cloud-hosting-researcher",
+        "name": "Cloud Hosting & Infrastructure Research Agent",
+        "role": "Research cloud hosting solutions for AI-powered content engine",
+        "model": "gemini",
+        "instructions": "Research E2B.com (code interpreter platform), compare with AWS, Google Cloud, DigitalOcean, Railway, Fly.io, Render, and analyze existing GreenGeeks hosting at trendsqueeze.com. Evaluate costs, scalability, AI agent compatibility, WordPress hosting capabilities, and deployment complexity. Consider hybrid approaches (GreenGeeks for WordPress + serverless for agents).",
+        "tools": ["web_search", "cost_analysis", "technical_evaluation"],
+        "priority": "high"
+      },
+      {
+        "id": "ai-subscription-analyst",
+        "name": "AI Subscription Plans Cost Analyst",
+        "role": "Analyze AI API subscription plans vs pay-per-token costs",
+        "model": "gemini",
+        "instructions": "Research and compare subscription plans: Anthropic Claude Pro/Team, OpenAI ChatGPT Plus/Team/Enterprise, Google Gemini Advanced/Business, Kimi, and OpenRouter pricing. Calculate cost-effectiveness for high-volume content generation (200+ articles/month). Analyze token management strategies, rate limits, and cost optimization with OpenRouter as a unified interface.",
+        "tools": ["cost_analysis", "financial_modeling"],
+        "priority": "high"
+      },
+      {
+        "id": "wordpress-ad-integration-researcher",
+        "name": "WordPress Ad Integration Specialist",
+        "role": "Research WordPress setup optimized for ad revenue",
+        "model": "gemini",
+        "instructions": "Research WordPress themes, plugins, and configurations optimized for ad revenue. Analyze ad placement strategies, page speed optimization (Core Web Vitals), SEO for ad-supported content, header bidding, lazy loading, and ad refresh strategies. Research Auto Ads vs manual placement, ad density limits, and user experience balance.",
+        "tools": ["web_search", "ux_research"],
+        "priority": "medium"
+      },
+      {
+        "id": "automation-architect",
+        "name": "Complete Automation Architecture Agent",
+        "role": "Design fully automated AI agent system for content engine",
+        "model": "openrouter",
+        "instructions": "Design a complete automation architecture using AI coding agents to build and maintain the platform. Define agent roles: Code Generator Agent, Testing Agent, Deployment Agent, Monitoring Agent, Content Generation Agents, SEO Optimization Agent. Create self-healing and self-improving system design. Include human-in-the-loop checkpoints only where absolutely necessary.",
+        "tools": ["architecture_design", "planning"],
+        "priority": "critical"
+      },
+      {
+        "id": "cost-optimizer",
+        "name": "Total Cost Optimization Agent",
+        "role": "Calculate total cost reduction using AI agents + ad revenue",
+        "model": "gemini",
+        "instructions": "Calculate total costs: AI subscription plans vs pay-per-token, hosting costs (E2B + GreenGeeks), AI coding agent costs vs human developers. Project ad revenue based on traffic projections (10K, 50K, 100K, 500K monthly visitors). Calculate break-even points, ROI, and compare to original SaaS model.",
+        "tools": ["financial_analysis", "modeling"],
+        "priority": "high"
+      },
+      {
+        "id": "goal-planner-v2",
+        "name": "Goal Planning Agent V2",
+        "role": "Create strategic roadmap for AI-agent-driven development",
+        "model": "openrouter",
+        "instructions": "Create implementation roadmap: Phase 1 (AI agent setup + basic automation), Phase 2 (WordPress site on trendsqueeze.com with ads), Phase 3 (scale to 100K+ visitors). Define success metrics, timeline, milestones, and decision points. Consider using existing GreenGeeks hosting as starting point.",
+        "tools": ["planning", "synthesis"],
+        "priority": "high"
+      },
+      {
+        "id": "prd-writer-v2",
+        "name": "PRD Writer Agent V2",
+        "role": "Compile updated PRD with AI-agent development approach",
+        "model": "openrouter",
+        "instructions": "Create updated PRD incorporating: AI coding agents for development (zero/minimal human developers), ad monetization strategy (AdSense to premium networks), trendsqueeze.com as primary domain, AI subscription plan costs, complete automation architecture, and revised financial projections with ad revenue model.",
+        "tools": ["documentation", "synthesis"],
+        "priority": "critical"
+      }
+    ],
+    "executionStrategy": "parallel-then-sequential",
+    "phases": [
+      {
+        "name": "deep-research",
+        "agents": ["ai-coding-researcher", "agentic-flow-researcher", "ad-monetization-researcher", "cloud-hosting-researcher", "ai-subscription-analyst"],
+        "execution": "parallel"
+      },
+      {
+        "name": "specialized-research",
+        "agents": ["wordpress-ad-integration-researcher", "cost-optimizer"],
+        "execution": "parallel",
+        "dependsOn": ["deep-research"]
+      },
+      {
+        "name": "planning",
+        "agents": ["automation-architect", "goal-planner-v2"],
+        "execution": "parallel",
+        "dependsOn": ["deep-research", "specialized-research"]
+      },
+      {
+        "name": "documentation",
+        "agents": ["prd-writer-v2"],
+        "execution": "sequential",
+        "dependsOn": ["deep-research", "specialized-research", "planning"]
+      }
+    ]
+  },
+  "research": {
+    "topic": "AI-Agent-Driven Content Engine with Ad Monetization",
+    "context": {
+      "existing_domain": "trendsqueeze.com",
+      "current_hosting": "GreenGeeks.com",
+      "development_approach": "AI coding agents (zero/minimal human developers)",
+      "monetization_model": "Ad revenue (not SaaS subscription)",
+      "target_ad_networks": [
+        "Google AdSense",
+        "Ezoic",
+        "Mediavine",
+        "Raptive (AdThrive)",
+        "Monumetric",
+        "Snigel"
+      ],
+      "ai_apis": {
+        "models": ["Anthropic Claude", "OpenAI ChatGPT", "Google Gemini", "Kimi"],
+        "management": "OpenRouter for unified token management",
+        "pricing_preference": "Subscription plans over pay-per-token"
+      }
+    },
+    "requirements": {
+      "core_objectives": [
+        "Use AI coding agents to build WordPress platform (eliminate developer costs)",
+        "Deploy on trendsqueeze.com with ad monetization",
+        "Complete automation with multi-agent swarms",
+        "Maximize ad revenue through optimization",
+        "Minimize operational costs through AI subscriptions"
+      ],
+      "key_questions": [
+        "Can AI coding agents fully replace human developers for this project?",
+        "What is the most cost-effective AI subscription combination?",
+        "Which ad networks offer best ROI for automated content?",
+        "Should we use E2B.com or leverage existing GreenGeeks hosting?",
+        "What is realistic ad revenue at 10K, 50K, 100K, 500K monthly visitors?",
+        "How to structure agent swarms for code generation + content generation?",
+        "What human oversight is absolutely necessary?"
+      ]
+    },
+    "deliverables": [
+      "AI coding agent capabilities and limitations analysis",
+      "Ad monetization strategy and revenue projections",
+      "Cloud hosting recommendation (E2B vs GreenGeeks vs hybrid)",
+      "AI subscription cost analysis and recommendations",
+      "Complete automation architecture with agent swarms",
+      "Updated PRD with AI-agent development approach",
+      "Revised financial model (ad revenue vs SaaS)",
+      "Implementation roadmap for trendsqueeze.com launch"
+    ]
+  }
+}
